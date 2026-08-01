@@ -8,15 +8,21 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Segoe UI"', 'Arial', 'sans-serif'],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        // Dashboard Theme Colors
         brand: {
-          50: "#f0f7ff",
-          100: "#e0effe",
-          500: "#3b82f6",
-          600: "#2563eb",
-          900: "#1e3a8a",
+          blue: "#4d7cf5",
+          "blue-dark": "#3660e0",
+          dark: "#1c1f26",
+          card: "#ffffff",
+          muted: "#8a90a2",
+          line: "#eef0f4",
+          bg: "#111318",
         },
         accent: {
           cyan: "#06b6d4",

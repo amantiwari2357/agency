@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col antialiased">
+      <body className="min-h-screen flex flex-col antialiased bg-[#111318]">
         <ThemeProvider>
           <EnhancedHeader />
           <main className="flex-1 pt-16">

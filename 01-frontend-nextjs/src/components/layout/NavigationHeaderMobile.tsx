@@ -29,14 +29,14 @@ export default function HeaderMobile({ currentCountry = "us" }: HeaderMobileProp
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-200 shadow-sm">
+    <header className="sticky top-0 z-50 w-full bg-white border-b border-[#eef0f4] shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="h-16 flex items-center justify-between">
           {/* Brand Logo */}
           <Link href={`/${currentCountry}`} className="flex items-center space-x-3 group">
             <div>
-              <span className="text-lg font-bold tracking-wider text-gray-900">AEX AGENCY</span>
-              <span className="block text-[10px] text-blue-600 font-mono tracking-widest uppercase">
+              <span className="text-lg font-bold tracking-wider text-[#1c1f26]">AEX AGENCY</span>
+              <span className="block text-[10px] text-[#4d7cf5] font-mono tracking-widest uppercase">
                 Multi-Industry Modular Engine
               </span>
             </div>
@@ -45,15 +45,15 @@ export default function HeaderMobile({ currentCountry = "us" }: HeaderMobileProp
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            className="lg:hidden p-2 rounded-lg hover:bg-[#eef0f4] transition-colors"
           >
-            {isMenuOpen ? <X className="w-5 h-5 text-gray-700" /> : <Menu className="w-5 h-5 text-gray-700" />}
+            {isMenuOpen ? <X className="w-5 h-5 text-[#1c1f26]" /> : <Menu className="w-5 h-5 text-[#1c1f26]" />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-gray-200">
+          <div className="lg:hidden py-4 border-t border-[#eef0f4]">
             <nav className="flex flex-col space-y-2">
               {navLinks.map((link) => (
                 <div key={link.name}>
@@ -61,7 +61,7 @@ export default function HeaderMobile({ currentCountry = "us" }: HeaderMobileProp
                     <div>
                       <button
                         onClick={() => setIsServicesOpen(!isServicesOpen)}
-                        className="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-gray-700 hover:text-blue-600 rounded-lg hover:bg-gray-100 transition-all"
+                        className="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-[#1c1f26] hover:text-[#4d7cf5] rounded-lg hover:bg-[#eef0f4] transition-all"
                       >
                         <span>{link.name}</span>
                         <ChevronDown className={`w-4 h-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
@@ -72,7 +72,7 @@ export default function HeaderMobile({ currentCountry = "us" }: HeaderMobileProp
                             <Link
                               key={service.name}
                               href={service.href}
-                              className="block px-4 py-2 text-sm text-gray-600 hover:text-blue-600 rounded-lg hover:bg-gray-50 transition-colors"
+                              className="block px-4 py-2 text-sm text-[#8a90a2] hover:text-[#4d7cf5] rounded-lg hover:bg-[#eef0f4] transition-colors"
                               onClick={() => {
                                 setIsServicesOpen(false);
                                 setIsMenuOpen(false);
@@ -87,7 +87,7 @@ export default function HeaderMobile({ currentCountry = "us" }: HeaderMobileProp
                   ) : (
                     <Link
                       href={link.href}
-                      className="block px-4 py-3 text-sm font-medium text-gray-700 hover:text-blue-600 rounded-lg hover:bg-gray-100 transition-all"
+                      className="block px-4 py-3 text-sm font-medium text-[#1c1f26] hover:text-[#4d7cf5] rounded-lg hover:bg-[#eef0f4] transition-all"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {link.name}
@@ -98,13 +98,13 @@ export default function HeaderMobile({ currentCountry = "us" }: HeaderMobileProp
             </nav>
 
             {/* Mobile Region */}
-            <div className="mt-4 pt-4 border-t border-gray-200">
-              <div className="flex items-center space-x-1 bg-gray-100 border border-gray-200 rounded-xl px-2 py-1">
-                <Globe className="w-3.5 h-3.5 text-gray-500 mr-1" />
+            <div className="mt-4 pt-4 border-t border-[#eef0f4]">
+              <div className="flex items-center space-x-1 bg-[#eef0f4] border border-[#eef0f4] rounded-xl px-2 py-1">
+                <Globe className="w-3.5 h-3.5 text-[#8a90a2] mr-1" />
                 <Link
                   href="/us"
                   className={`px-2 py-0.5 rounded text-xs font-semibold ${
-                    currentCountry === "us" ? "bg-blue-600 text-white" : "text-gray-600 hover:text-gray-900"
+                    currentCountry === "us" ? "bg-[#4d7cf5] text-white" : "text-[#8a90a2] hover:text-[#1c1f26]"
                   }`}
                 >
                   US ($)
@@ -112,7 +112,7 @@ export default function HeaderMobile({ currentCountry = "us" }: HeaderMobileProp
                 <Link
                   href="/uk"
                   className={`px-2 py-0.5 rounded text-xs font-semibold ${
-                    currentCountry === "uk" ? "bg-blue-600 text-white" : "text-gray-600 hover:text-gray-900"
+                    currentCountry === "uk" ? "bg-[#4d7cf5] text-white" : "text-[#8a90a2] hover:text-[#1c1f26]"
                   }`}
                 >
                   UK (£)
@@ -120,10 +120,18 @@ export default function HeaderMobile({ currentCountry = "us" }: HeaderMobileProp
                 <Link
                   href="/ae"
                   className={`px-2 py-0.5 rounded text-xs font-semibold ${
-                    currentCountry === "ae" ? "bg-blue-600 text-white" : "text-gray-600 hover:text-gray-900"
+                    currentCountry === "ae" ? "bg-[#4d7cf5] text-white" : "text-[#8a90a2] hover:text-[#1c1f26]"
                   }`}
                 >
                   AE (AED)
+                </Link>
+                <Link
+                  href="/in"
+                  className={`px-2 py-0.5 rounded text-xs font-semibold ${
+                    currentCountry === "in" ? "bg-[#4d7cf5] text-white" : "text-[#8a90a2] hover:text-[#1c1f26]"
+                  }`}
+                >
+                  IN (₹)
                 </Link>
               </div>
             </div>

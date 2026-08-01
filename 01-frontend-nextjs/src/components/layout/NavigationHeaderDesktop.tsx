@@ -28,14 +28,14 @@ export default function HeaderDesktop({ currentCountry = "us" }: HeaderDesktopPr
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-200 shadow-sm">
+    <header className="sticky top-0 z-50 w-full bg-white border-b border-[#eef0f4] shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="h-16 flex items-center justify-between">
           {/* Brand Logo */}
           <Link href={`/${currentCountry}`} className="flex items-center space-x-3 group">
             <div>
-              <span className="text-lg font-bold tracking-wider text-gray-900">AEX AGENCY</span>
-              <span className="block text-[10px] text-blue-600 font-mono tracking-widest uppercase">
+              <span className="text-lg font-bold tracking-wider text-[#1c1f26]">AEX AGENCY</span>
+              <span className="block text-[10px] text-[#4d7cf5] font-mono tracking-widest uppercase">
                 Multi-Industry Modular Engine
               </span>
             </div>
@@ -49,18 +49,18 @@ export default function HeaderDesktop({ currentCountry = "us" }: HeaderDesktopPr
                   <div className="relative">
                     <button
                       onClick={() => setIsServicesOpen(!isServicesOpen)}
-                      className="flex items-center space-x-1 px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 rounded-lg hover:bg-gray-100 transition-all duration-200"
+                      className="flex items-center space-x-1 px-4 py-2 text-sm font-medium text-[#1c1f26] hover:text-[#4d7cf5] rounded-lg hover:bg-[#eef0f4] transition-all duration-200"
                     >
                       <span>{link.name}</span>
                       <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
                     </button>
                     {isServicesOpen && (
-                      <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl border border-gray-200 shadow-xl py-2">
+                      <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl border border-[#eef0f4] shadow-xl py-2">
                         {services.map((service) => (
                           <Link
                             key={service.name}
                             href={service.href}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors"
+                            className="block px-4 py-2 text-sm text-[#1c1f26] hover:text-[#4d7cf5] hover:bg-[#eef0f4] transition-colors"
                             onClick={() => setIsServicesOpen(false)}
                           >
                             {service.name}
@@ -72,7 +72,7 @@ export default function HeaderDesktop({ currentCountry = "us" }: HeaderDesktopPr
                 ) : (
                   <Link
                     href={link.href}
-                    className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 rounded-lg hover:bg-gray-100 transition-all duration-200"
+                    className="px-4 py-2 text-sm font-medium text-[#1c1f26] hover:text-[#4d7cf5] rounded-lg hover:bg-[#eef0f4] transition-all duration-200"
                   >
                     {link.name}
                   </Link>
@@ -84,12 +84,12 @@ export default function HeaderDesktop({ currentCountry = "us" }: HeaderDesktopPr
           {/* Right Side Controls */}
           <div className="flex items-center space-x-2 sm:space-x-3">
             {/* Region Switcher */}
-            <div className="hidden sm:flex items-center space-x-1 bg-gray-100 border border-gray-200 rounded-xl px-2 py-1">
-              <Globe className="w-3.5 h-3.5 text-gray-500 mr-1" />
+            <div className="hidden sm:flex items-center space-x-1 bg-[#eef0f4] border border-[#eef0f4] rounded-xl px-2 py-1">
+              <Globe className="w-3.5 h-3.5 text-[#8a90a2] mr-1" />
               <Link
                 href="/us"
                 className={`px-2 py-0.5 rounded text-xs font-semibold ${
-                  currentCountry === "us" ? "bg-blue-600 text-white" : "text-gray-600 hover:text-gray-900"
+                  currentCountry === "us" ? "bg-[#4d7cf5] text-white" : "text-[#8a90a2] hover:text-[#1c1f26]"
                 }`}
               >
                 US ($)
@@ -97,7 +97,7 @@ export default function HeaderDesktop({ currentCountry = "us" }: HeaderDesktopPr
               <Link
                 href="/uk"
                 className={`px-2 py-0.5 rounded text-xs font-semibold ${
-                  currentCountry === "uk" ? "bg-blue-600 text-white" : "text-gray-600 hover:text-gray-900"
+                  currentCountry === "uk" ? "bg-[#4d7cf5] text-white" : "text-[#8a90a2] hover:text-[#1c1f26]"
                 }`}
               >
                 UK (£)
@@ -105,10 +105,18 @@ export default function HeaderDesktop({ currentCountry = "us" }: HeaderDesktopPr
               <Link
                 href="/ae"
                 className={`px-2 py-0.5 rounded text-xs font-semibold ${
-                  currentCountry === "ae" ? "bg-blue-600 text-white" : "text-gray-600 hover:text-gray-900"
+                  currentCountry === "ae" ? "bg-[#4d7cf5] text-white" : "text-[#8a90a2] hover:text-[#1c1f26]"
                 }`}
               >
                 AE (AED)
+              </Link>
+              <Link
+                href="/in"
+                className={`px-2 py-0.5 rounded text-xs font-semibold ${
+                  currentCountry === "in" ? "bg-[#4d7cf5] text-white" : "text-[#8a90a2] hover:text-[#1c1f26]"
+                }`}
+              >
+                IN (₹)
               </Link>
             </div>
           </div>
