@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { Sparkles, Github, Twitter, Linkedin, Mail, MapPin, Phone, ArrowUp, Clock, Shield, Globe, Users, Award, Star, Home, ShoppingBag, Cloud, BarChart3, Search, GraduationCap, Building, Book, FileText, HelpCircle, Globe2, Zap } from "lucide-react";
+import { Sparkles, Github, Twitter, Linkedin, Mail, MapPin, Phone, ArrowUp, Clock, Shield, Globe, Users, Award, Star, Home, ShoppingBag, Cloud, BarChart3, Search, GraduationCap, Building, Book, FileText, HelpCircle, Globe2, Zap, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface AdvancedFooterProps {
   countryCode: string;
@@ -14,6 +14,41 @@ interface AdvancedFooterProps {
 export default function AdvancedFooter({ countryCode, countryName, currency, currencySymbol }: AdvancedFooterProps) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+
+  const footerTestimonials = {
+    us: [
+      { name: "Sarah Johnson", role: "CEO, TechStart Inc", content: "AEX Agency transformed our digital presence completely. Their real estate technology solution increased our property inquiries by 300% in just 3 months." },
+      { name: "Michael Chen", role: "CTO, CloudScale Technologies", content: "The cloud infrastructure solutions provided by AEX Agency helped us scale our operations across the US with 99.9% uptime." },
+      { name: "Emily Rodriguez", role: "Marketing Director, RetailMax Group", content: "Their SEO and digital marketing services drove a 450% increase in organic traffic. The ROI on our marketing spend has been phenomenal." }
+    ],
+    uk: [
+      { name: "James Wilson", role: "Managing Director, London Properties Ltd", content: "The real estate technology solutions provided by AEX Agency have revolutionized how we manage property listings in the UK market." },
+      { name: "Sarah Mitchell", role: "Head of Digital, British Retail Group", content: "Their e-commerce solutions helped us increase online sales by 200% in 6 months across the UK market." },
+      { name: "Robert Clarke", role: "CEO, Tech Innovators UK", content: "AEX Agency's cloud migration services were seamless. They handled our complex legacy systems with expertise." }
+    ],
+    ae: [
+      { name: "Ahmed Al-Farsi", role: "Director, Dubai Properties", content: "AEX Agency delivered exceptional real estate technology solutions for our Dubai operations. Their understanding of the Middle East market is outstanding." },
+      { name: "Fatima Hassan", role: "CEO, Gulf E-Commerce", content: "Their e-commerce platform helped us expand across the GCC region with multilingual support and local payment integrations." },
+      { name: "Omar Khalil", role: "CTO, MENA Cloud Solutions", content: "The cloud infrastructure provided by AEX Agency scaled our operations seamlessly across the UAE with 99.9% uptime." }
+    ],
+    in: [
+      { name: "Priya Sharma", role: "Founder, E-Commerce India", content: "AEX Agency's SEO and marketing services drove a 450% increase in organic traffic. The team's understanding of the Indian market is exceptional." },
+      { name: "Rajesh Kumar", role: "CEO, Tech India Solutions", content: "Their cloud infrastructure solutions helped us scale across India with 99.9% uptime and excellent local support." },
+      { name: "Anita Patel", role: "HR Director, Campus Placements India", content: "Their HR placement platform transformed our campus recruitment process with a 200% increase in successful placements." }
+    ]
+  };
+
+  const testimonials = footerTestimonials[countryCode as keyof typeof footerTestimonials] || footerTestimonials.us;
+
+  const nextTestimonial = () => {
+    setCurrentTestimonialIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonialIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   const countrySpecificData = {
@@ -50,46 +85,59 @@ export default function AdvancedFooter({ countryCode, countryName, currency, cur
   const countryData = countrySpecificData[countryCode as keyof typeof countrySpecificData] || countrySpecificData.us;
 
   const services = [
-    { name: "Real Estate", href: `/countries/${countryCode}/services/real-estate`, icon: Building },
-    { name: "E-Commerce", href: `/countries/${countryCode}/services/ecommerce`, icon: ShoppingBag },
-    { name: "Cloud Solutions", href: `/countries/${countryCode}/services/cloud`, icon: Cloud },
-    { name: "Digital Marketing", href: `/countries/${countryCode}/services/marketing`, icon: BarChart3 },
-    { name: "SEO Services", href: `/countries/${countryCode}/services/seo`, icon: Search },
-    { name: "HR Placements", href: `/countries/${countryCode}/services/placements`, icon: GraduationCap },
+    { name: "Real Estate", href: `/${countryCode}/services/real-estate`, icon: Building },
+    { name: "E-Commerce", href: `/${countryCode}/services/ecommerce`, icon: ShoppingBag },
+    { name: "Cloud Solutions", href: `/${countryCode}/services/cloud`, icon: Cloud },
+    { name: "Digital Marketing", href: `/${countryCode}/services/marketing`, icon: BarChart3 },
+    { name: "SEO Services", href: `/${countryCode}/services/seo`, icon: Search },
+    { name: "HR Placements", href: `/${countryCode}/services/placements`, icon: GraduationCap },
   ];
 
   const company = [
-    { name: "About Us", href: `/countries/${countryCode}/about` },
-    { name: "Our Services", href: `/countries/${countryCode}/services` },
+    { name: "About Us", href: `/${countryCode}/about` },
+    { name: "Our Services", href: `/${countryCode}/services` },
     { name: "Careers", href: "/careers" },
-    { name: "Contact", href: `/countries/${countryCode}/contact` },
-    { name: "Privacy Policy", href: `/countries/${countryCode}/privacy` },
-    { name: "Terms of Service", href: `/countries/${countryCode}/terms` },
+    { name: "Contact", href: `/${countryCode}/contact` },
+    { name: "Privacy Policy", href: `/${countryCode}/privacy` },
+    { name: "Terms of Service", href: `/${countryCode}/terms` },
   ];
 
   const resources = [
-    { name: "Resources", href: `/countries/${countryCode}/resources`, icon: Book },
-    { name: "Blog", href: `/countries/${countryCode}/blog`, icon: Book },
-    { name: "Case Studies", href: `/countries/${countryCode}/case-studies`, icon: FileText },
-    { name: "Documentation", href: `/countries/${countryCode}/documentation`, icon: FileText },
-    { name: "Help Center", href: `/countries/${countryCode}/help-center`, icon: HelpCircle },
-    { name: "API Reference", href: `/countries/${countryCode}/api-reference`, icon: Globe2 },
-    { name: "Status Page", href: `/countries/${countryCode}/status`, icon: Zap },
+    { name: "Resources", href: `/${countryCode}/resources`, icon: Book },
+    { name: "Blog", href: `/${countryCode}/blog`, icon: Book },
+    { name: "Case Studies", href: `/${countryCode}/case-studies`, icon: FileText },
+    { name: "Documentation", href: `/${countryCode}/documentation`, icon: FileText },
+    { name: "Help Center", href: `/${countryCode}/help-center`, icon: HelpCircle },
+    { name: "API Reference", href: `/${countryCode}/api-reference`, icon: Globe2 },
+    { name: "Status Page", href: `/${countryCode}/status`, icon: Zap },
   ];
 
   const industries = [
-    { name: "Real Estate", href: `/countries/${countryCode}/services/real-estate`, icon: Building },
-    { name: "Fashion Retail", href: `/countries/${countryCode}/services/ecommerce`, icon: ShoppingBag },
-    { name: "Technology", href: `/countries/${countryCode}/services/cloud`, icon: Cloud },
-    { name: "Healthcare", href: "/industries/healthcare", icon: Shield },
-    { name: "Finance", href: "/industries/finance", icon: Award },
-    { name: "Education", href: "/industries/education", icon: Book },
+    { name: "Real Estate", href: `/${countryCode}/services/real-estate`, icon: Building },
+    { name: "Fashion Retail", href: `/${countryCode}/services/ecommerce`, icon: ShoppingBag },
+    { name: "Technology", href: `/${countryCode}/services/cloud`, icon: Cloud },
+    { name: "Healthcare", href: `/${countryCode}/services/real-estate`, icon: Shield },
+    { name: "Finance", href: `/${countryCode}/services/marketing`, icon: Award },
+    { name: "Education", href: `/${countryCode}/services/placements`, icon: Book },
+  ];
+
+  const trustSignals = [
+    { name: "ISO 27001 Certified", icon: Shield },
+    { name: "SOC 2 Compliant", icon: Award },
+    { name: "GDPR Compliant", icon: Globe },
+    { name: "24/7 Support", icon: Clock },
+  ];
+
+  const socialLinks = [
+    { name: "Twitter", href: "https://twitter.com/aexagency", icon: Twitter },
+    { name: "LinkedIn", href: "https://linkedin.com/company/aexagency", icon: Linkedin },
+    { name: "GitHub", href: "https://github.com/aexagency", icon: Github },
   ];
 
   return (
     <footer className="w-full bg-[#eef0f4] border-t border-[#4d7cf5]/30">
       <div className="max-w-7xl mx-auto px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-2 space-y-6">
             <div className="flex items-center space-x-3">
@@ -110,34 +158,47 @@ export default function AdvancedFooter({ countryCode, countryName, currency, cur
             
             {/* Trust Badges */}
             <div className="flex flex-wrap gap-3">
-              <div className="flex items-center gap-2 px-3 py-2 bg-white rounded-lg border border-[#4d7cf5]/30">
-                <Shield className="w-4 h-4 text-[#4d7cf5]" />
-                <span className="text-xs text-[#1c1f26] font-medium">SSL Secured</span>
-              </div>
-              <div className="flex items-center gap-2 px-3 py-2 bg-white rounded-lg border border-[#4d7cf5]/30">
-                <Award className="w-4 h-4 text-[#4d7cf5]" />
-                <span className="text-xs text-[#1c1f26] font-medium">ISO Certified</span>
-              </div>
-              <div className="flex items-center gap-2 px-3 py-2 bg-white rounded-lg border border-[#4d7cf5]/30">
-                <Star className="w-4 h-4 text-[#4d7cf5]" />
-                <span className="text-xs text-[#1c1f26] font-medium">4.9★ Rating</span>
-              </div>
+              {trustSignals.map((signal, index) => (
+                <div key={index} className="flex items-center gap-2 px-3 py-2 bg-white rounded-lg border border-[#4d7cf5]/30">
+                  <signal.icon className="w-4 h-4 text-[#4d7cf5]" />
+                  <span className="text-xs text-[#1c1f26] font-medium">{signal.name}</span>
+                </div>
+              ))}
             </div>
 
             {/* Social Links */}
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-lg bg-white border border-[#4d7cf5]/30 flex items-center justify-center text-[#4a5060] hover:text-[#4d7cf5] hover:bg-[#4d7cf5]/10 hover:border-[#4d7cf5] transition-all duration-300">
-                <Github className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-white border border-[#4d7cf5]/30 flex items-center justify-center text-[#4a5060] hover:text-[#4d7cf5] hover:bg-[#4d7cf5]/10 hover:border-[#4d7cf5] transition-all duration-300">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-white border border-[#4d7cf5]/30 flex items-center justify-center text-[#4a5060] hover:text-[#4d7cf5] hover:bg-[#4d7cf5]/10 hover:border-[#4d7cf5] transition-all duration-300">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-white border border-[#4d7cf5]/30 flex items-center justify-center text-[#4a5060] hover:text-[#4d7cf5] hover:bg-[#4d7cf5]/10 hover:border-[#4d7cf5] transition-all duration-300">
-                <Mail className="w-5 h-5" />
-              </a>
+              {socialLinks.map((social, index) => (
+                <a 
+                  key={index}
+                  href={social.href} 
+                  className="w-10 h-10 rounded-lg bg-white border border-[#4d7cf5]/30 flex items-center justify-center text-[#4a5060] hover:text-[#4d7cf5] hover:bg-[#4d7cf5]/10 hover:border-[#4d7cf5] transition-all duration-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <social.icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
+
+            {/* Contact Info */}
+            <div className="space-y-3 pt-4 border-t border-[#4d7cf5]/30">
+              <div className="flex items-center gap-3 text-sm text-[#4a5060]">
+                <MapPin className="w-4 h-4 text-[#4d7cf5]" />
+                <span>{countryData.address}</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm text-[#4a5060]">
+                <Phone className="w-4 h-4 text-[#4d7cf5]" />
+                <span>{countryData.phone}</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm text-[#4a5060]">
+                <Mail className="w-4 h-4 text-[#4d7cf5]" />
+                <span>{countryData.email}</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm text-[#4a5060]">
+                <Clock className="w-4 h-4 text-[#4d7cf5]" />
+                <span>{countryData.hours}</span>
+              </div>
             </div>
           </div>
 
@@ -200,8 +261,52 @@ export default function AdvancedFooter({ countryCode, countryName, currency, cur
             </ul>
           </div>
 
+          {/* Testimonials Section */}
+          <div className="lg:col-span-1">
+            <h3 className="text-[#1c1f26] font-semibold mb-4 text-sm uppercase tracking-wider">Client Testimonials</h3>
+            <div className="bg-white rounded-xl p-6 border border-[#4d7cf5]/30 relative">
+              <Quote className="absolute top-4 right-4 w-8 h-8 text-[#4d7cf5]/20" />
+              <div className="relative z-10">
+                <p className="text-sm text-[#4a5060] mb-4 italic leading-relaxed">
+                  "{testimonials[currentTestimonialIndex].content}"
+                </p>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-semibold text-[#1c1f26] text-sm">{testimonials[currentTestimonialIndex].name}</p>
+                    <p className="text-xs text-[#8a90a2]">{testimonials[currentTestimonialIndex].role}</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={prevTestimonial}
+                      className="w-8 h-8 rounded-full bg-[#eef0f4] flex items-center justify-center text-[#4d7cf5] hover:bg-[#4d7cf5] hover:text-white transition-all"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={nextTestimonial}
+                      className="w-8 h-8 rounded-full bg-[#4d7cf5] flex items-center justify-center text-white hover:bg-[#3660e0] transition-all"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+                <div className="flex gap-1 mt-4">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentTestimonialIndex(index)}
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        index === currentTestimonialIndex ? 'bg-[#4d7cf5]' : 'bg-[#eef0f4]'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Contact Section */}
-          <div>
+          <div className="lg:col-span-1">
             <h3 className="text-[#1c1f26] font-semibold mb-4 text-sm uppercase tracking-wider">Contact {countryName}</h3>
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
@@ -271,11 +376,11 @@ export default function AdvancedFooter({ countryCode, countryName, currency, cur
             <div>
               <h3 className="text-[#1c1f26] font-semibold mb-4 text-sm uppercase tracking-wider">Quick Links</h3>
               <div className="flex flex-wrap gap-2">
-                <Link href={`/countries/${countryCode}`} className="text-sm text-[#4a5060] hover:text-[#4d7cf5] transition-colors">
+                <Link href={`/${countryCode}`} className="text-sm text-[#4a5060] hover:text-[#4d7cf5] transition-colors">
                   Home
                 </Link>
                 <span className="text-[#4a5060]">•</span>
-                <Link href={`/countries/${countryCode}/services`} className="text-sm text-[#4a5060] hover:text-[#4d7cf5] transition-colors">
+                <Link href={`/${countryCode}/services`} className="text-sm text-[#4a5060] hover:text-[#4d7cf5] transition-colors">
                   Services
                 </Link>
                 <span className="text-[#4a5060]">•</span>

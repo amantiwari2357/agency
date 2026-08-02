@@ -25,10 +25,10 @@ const navigationItems: NavigationItem[] = [
   },
   {
     label: 'Countries',
-    href: '/countries',
+    href: '/countries-list',
     children: COUNTRIES.slice(0, 10).map(country => ({
       label: `${country.flag} ${country.name}`,
-      href: `/countries/${country.code}`
+      href: `/${country.code}`
     }))
   },
   {
@@ -88,7 +88,7 @@ export default function EnhancedHeader() {
 
   const handleCountrySelect = (countryCode: string) => {
     setCountryDropdownOpen(false);
-    router.push(`/countries/${countryCode}`);
+    router.push(`/${countryCode}`);
   };
 
   const handleLogin = () => {

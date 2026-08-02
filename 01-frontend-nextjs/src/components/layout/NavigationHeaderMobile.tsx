@@ -16,42 +16,42 @@ export default function HeaderMobile({ currentCountry = "us" }: HeaderMobileProp
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
 
   const navLinks = [
-    { name: "Solutions", href: `/countries/${currentCountry}/pricing`, hasDropdown: true, dropdownId: "solutions" },
-    { name: "Services", href: `/countries/${currentCountry}/services`, hasDropdown: true, dropdownId: "services" },
-    { name: "Resources", href: `/countries/${currentCountry}/resources`, hasDropdown: true, dropdownId: "resources" },
-    { name: "Company", href: `/countries/${currentCountry}/about`, hasDropdown: true, dropdownId: "company" },
+    { name: "Solutions", href: `/${currentCountry}/pricing`, hasDropdown: true, dropdownId: "solutions" },
+    { name: "Services", href: `/${currentCountry}/services`, hasDropdown: true, dropdownId: "services" },
+    { name: "Resources", href: `/${currentCountry}/resources`, hasDropdown: true, dropdownId: "resources" },
+    { name: "Company", href: `/${currentCountry}/about`, hasDropdown: true, dropdownId: "company" },
   ];
 
   const services = [
-    { name: "Real Estate", href: `/countries/${currentCountry}/services/real-estate` },
-    { name: "E-Commerce", href: `/countries/${currentCountry}/services/ecommerce` },
-    { name: "Cloud Solutions", href: `/countries/${currentCountry}/services/cloud` },
-    { name: "Marketing", href: `/countries/${currentCountry}/services/marketing` },
-    { name: "SEO", href: `/countries/${currentCountry}/services/seo` },
-    { name: "Placements", href: `/countries/${currentCountry}/services/placements` },
+    { name: "Real Estate", href: `/${currentCountry}/services/real-estate` },
+    { name: "E-Commerce", href: `/${currentCountry}/services/ecommerce` },
+    { name: "Cloud Solutions", href: `/${currentCountry}/services/cloud` },
+    { name: "Marketing", href: `/${currentCountry}/services/marketing` },
+    { name: "SEO", href: `/${currentCountry}/services/seo` },
+    { name: "Placements", href: `/${currentCountry}/services/placements` },
   ];
 
   const solutions = [
-    { name: "Pricing", href: `/countries/${currentCountry}/pricing` },
-    { name: "Support", href: `/countries/${currentCountry}/help-center` },
+    { name: "Pricing", href: `/${currentCountry}/pricing` },
+    { name: "Support", href: `/${currentCountry}/help-center` },
     { name: "Login", href: "/login" },
     { name: "Register", href: "/register" },
   ];
 
   const resources = [
-    { name: "Blog", href: `/countries/${currentCountry}/blog` },
-    { name: "Case Studies", href: `/countries/${currentCountry}/case-studies` },
-    { name: "Documentation", href: `/countries/${currentCountry}/documentation` },
-    { name: "Help Center", href: `/countries/${currentCountry}/help-center` },
-    { name: "API Reference", href: `/countries/${currentCountry}/api-reference` },
-    { name: "Status Page", href: `/countries/${currentCountry}/status` },
+    { name: "Blog", href: `/${currentCountry}/blog` },
+    { name: "Case Studies", href: `/${currentCountry}/case-studies` },
+    { name: "Documentation", href: `/${currentCountry}/documentation` },
+    { name: "Help Center", href: `/${currentCountry}/help-center` },
+    { name: "API Reference", href: `/${currentCountry}/api-reference` },
+    { name: "Status Page", href: `/${currentCountry}/status` },
   ];
 
   const company = [
-    { name: "About Us", href: `/countries/${currentCountry}/about` },
+    { name: "About Us", href: `/${currentCountry}/about` },
     { name: "Careers", href: "/careers" },
-    { name: "Privacy Policy", href: `/countries/${currentCountry}/privacy` },
-    { name: "Terms of Service", href: `/countries/${currentCountry}/terms` },
+    { name: "Privacy Policy", href: `/${currentCountry}/privacy` },
+    { name: "Terms of Service", href: `/${currentCountry}/terms` },
   ];
 
   const getDropdownState = (dropdownId: string) => {
@@ -96,7 +96,7 @@ export default function HeaderMobile({ currentCountry = "us" }: HeaderMobileProp
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="h-16 flex items-center justify-between">
           {/* Brand Logo */}
-          <Link href={`/countries/${currentCountry}`} className="flex items-center space-x-3 group">
+          <Link href={`/${currentCountry}`} className="flex items-center space-x-3 group">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#4d7cf5] to-[#3660e0] flex items-center justify-center shadow-lg shadow-[#4d7cf5]/20">
               <span className="text-white font-bold text-lg">A</span>
             </div>
@@ -160,7 +160,7 @@ export default function HeaderMobile({ currentCountry = "us" }: HeaderMobileProp
             {/* CTA Button */}
             <div className="mt-4 px-4">
               <Link
-                href={`/countries/${currentCountry}/contact`}
+                href={`/${currentCountry}/contact`}
                 className="inline-flex items-center justify-center w-full px-4 py-3 bg-[#4d7cf5] text-white text-sm font-semibold rounded-lg hover:bg-[#3660e0] transition-colors"
                 onClick={closeAll}
               >
@@ -173,7 +173,7 @@ export default function HeaderMobile({ currentCountry = "us" }: HeaderMobileProp
               <div className="flex items-center space-x-1 bg-[#eef0f4] border border-[#eef0f4] rounded-xl px-2 py-1">
                 <Globe className="w-3.5 h-3.5 text-[#8a90a2] mr-1" />
                 <Link
-                  href="/countries/us"
+                  href="/us"
                   className={`px-2 py-0.5 rounded text-xs font-semibold ${
                     currentCountry === "us" ? "bg-[#4d7cf5] text-white" : "text-[#8a90a2] hover:text-[#1c1f26]"
                   }`}
@@ -182,7 +182,7 @@ export default function HeaderMobile({ currentCountry = "us" }: HeaderMobileProp
                   US ($)
                 </Link>
                 <Link
-                  href="/countries/uk"
+                  href="/uk"
                   className={`px-2 py-0.5 rounded text-xs font-semibold ${
                     currentCountry === "uk" ? "bg-[#4d7cf5] text-white" : "text-[#8a90a2] hover:text-[#1c1f26]"
                   }`}
@@ -191,7 +191,7 @@ export default function HeaderMobile({ currentCountry = "us" }: HeaderMobileProp
                   UK (£)
                 </Link>
                 <Link
-                  href="/countries/ae"
+                  href="/ae"
                   className={`px-2 py-0.5 rounded text-xs font-semibold ${
                     currentCountry === "ae" ? "bg-[#4d7cf5] text-white" : "text-[#8a90a2] hover:text-[#1c1f26]"
                   }`}
@@ -200,7 +200,7 @@ export default function HeaderMobile({ currentCountry = "us" }: HeaderMobileProp
                   AE (AED)
                 </Link>
                 <Link
-                  href="/countries/in"
+                  href="/in"
                   className={`px-2 py-0.5 rounded text-xs font-semibold ${
                     currentCountry === "in" ? "bg-[#4d7cf5] text-white" : "text-[#8a90a2] hover:text-[#1c1f26]"
                   }`}

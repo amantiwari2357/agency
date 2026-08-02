@@ -375,13 +375,13 @@ export default function InsightsPage() {
             Explore our services and see how we can help transform your business with cutting-edge technology solutions.
           </p>
           <div className="flex items-center justify-center gap-4">
-            <Link href="/countries">
+            <Link href="/countries-list">
               <button className="px-8 py-4 bg-white hover:bg-gray-100 rounded-full text-[#4d7cf5] font-semibold transition-all duration-300 shadow-xl flex items-center gap-2">
                 View Countries
                 <ArrowRight className="w-4 h-4" />
               </button>
             </Link>
-            <Link href="/countries/us/services">
+            <Link href="/us/services">
               <button className="px-8 py-4 bg-transparent border-2 border-white hover:bg-white/20 rounded-full text-white font-semibold transition-all duration-300">
                 Explore Services
               </button>

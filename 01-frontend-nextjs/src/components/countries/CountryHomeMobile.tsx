@@ -21,12 +21,12 @@ export default function CountryHomeMobile({ countryCode, countryName, currency, 
   ];
 
   const services = [
-    { name: "Real Estate", href: `/countries/${countryCode}/services/real-estate`, icon: "🏠", description: "Property management solutions" },
-    { name: "E-Commerce", href: `/countries/${countryCode}/services/ecommerce`, icon: "🛒", description: "Online retail platforms" },
-    { name: "Cloud Solutions", href: `/countries/${countryCode}/services/cloud`, icon: "☁️", description: "Scalable infrastructure" },
-    { name: "Digital Marketing", href: `/countries/${countryCode}/services/marketing`, icon: "📈", description: "Growth marketing strategies" },
-    { name: "SEO Services", href: `/countries/${countryCode}/services/seo`, icon: "🔍", description: "Search engine optimization" },
-    { name: "HR Placements", href: `/countries/${countryCode}/services/placements`, icon: "👥", description: "Talent acquisition" },
+    { name: "Real Estate", href: `/${countryCode}/services/real-estate`, icon: "🏠", description: "Property management solutions" },
+    { name: "E-Commerce", href: `/${countryCode}/services/ecommerce`, icon: "🛒", description: "Online retail platforms" },
+    { name: "Cloud Solutions", href: `/${countryCode}/services/cloud`, icon: "☁️", description: "Scalable infrastructure" },
+    { name: "Digital Marketing", href: `/${countryCode}/services/marketing`, icon: "📈", description: "Growth marketing strategies" },
+    { name: "SEO Services", href: `/${countryCode}/services/seo`, icon: "🔍", description: "Search engine optimization" },
+    { name: "HR Placements", href: `/${countryCode}/services/placements`, icon: "👥", description: "Talent acquisition" },
   ];
 
   return (
@@ -54,13 +54,13 @@ export default function CountryHomeMobile({ countryCode, countryName, currency, 
               Empowering businesses in {countryName} with cutting-edge digital solutions
             </p>
             <div className="mt-6 flex flex-col items-center gap-3">
-              <Link href={`/countries/${countryCode}/services`}>
+              <Link href={`/${countryCode}/services`}>
                 <button className="w-full px-8 py-4 bg-white hover:bg-gray-100 rounded-full text-[#4d7cf5] font-semibold transition-all duration-300 shadow-xl shadow-white/20 transform hover:scale-105 flex items-center justify-center gap-2">
                   Explore Services
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </Link>
-              <Link href="/countries">
+              <Link href="/countries-list">
                 <button className="w-full px-8 py-4 bg-transparent border-2 border-white hover:bg-white/20 rounded-full text-white font-semibold transition-all duration-300">
                   View All Countries
                 </button>
@@ -172,7 +172,7 @@ export default function CountryHomeMobile({ countryCode, countryName, currency, 
                 </p>
               </div>
             </div>
-            <Link href={`/countries/${countryCode}/services/real-estate`}>
+            <Link href={`/${countryCode}/services/real-estate`}>
               <button className="group px-6 py-3 bg-white hover:bg-gray-100 rounded-full text-[#4d7cf5] font-semibold transition-all duration-300 shadow-xl shadow-white/20 transform hover:scale-105 flex items-center gap-2">
                 Get Started
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

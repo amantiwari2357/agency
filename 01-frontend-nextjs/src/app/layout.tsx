@@ -3,8 +3,20 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/context/ThemeContext";
 
 export const metadata: Metadata = {
-  title: "Aexagenvcy | Global Digital Solutions Agency",
+  title: "AEX Agency | Global Digital Solutions Agency",
   description: "Leading digital agency providing web development, mobile apps, SEO, cloud services, and digital marketing solutions across 24+ countries.",
+  alternates: {
+    canonical: "https://aexagency.com",
+  },
+  openGraph: {
+    title: "AEX Agency | Global Digital Solutions Agency",
+    description: "Leading digital agency providing web development, mobile apps, SEO, cloud services, and digital marketing solutions across 24+ countries.",
+    url: "https://aexagency.com",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

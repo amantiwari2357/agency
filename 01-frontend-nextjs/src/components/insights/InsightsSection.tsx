@@ -28,7 +28,7 @@ export default function InsightsSection({ countryCode }: { countryCode: string }
       value: "+45%",
       change: "vs last quarter",
       trend: 'up',
-      link: `/countries/${countryCode}/services/real-estate`,
+      link: `/${countryCode}/services/real-estate`,
       category: "Real Estate",
     },
     {
@@ -40,7 +40,7 @@ export default function InsightsSection({ countryCode }: { countryCode: string }
       value: "32%",
       change: "conversion rate",
       trend: 'up',
-      link: `/countries/${countryCode}/services/ecommerce`,
+      link: `/${countryCode}/services/ecommerce`,
       category: "E-Commerce",
     },
     {
@@ -52,7 +52,7 @@ export default function InsightsSection({ countryCode }: { countryCode: string }
       value: "40%",
       change: "cost reduction",
       trend: 'up',
-      link: `/countries/${countryCode}/services/cloud`,
+      link: `/${countryCode}/services/cloud`,
       category: "Cloud",
     },
     {
@@ -64,7 +64,7 @@ export default function InsightsSection({ countryCode }: { countryCode: string }
       value: "5.2x",
       change: "average ROI",
       trend: 'up',
-      link: `/countries/${countryCode}/services/marketing`,
+      link: `/${countryCode}/services/marketing`,
       category: "Marketing",
     },
     {
@@ -76,7 +76,7 @@ export default function InsightsSection({ countryCode }: { countryCode: string }
       value: "+67%",
       change: "organic traffic",
       trend: 'up',
-      link: `/countries/${countryCode}/services/seo`,
+      link: `/${countryCode}/services/seo`,
       category: "SEO",
     },
     {
@@ -88,7 +88,7 @@ export default function InsightsSection({ countryCode }: { countryCode: string }
       value: "92%",
       change: "success rate",
       trend: 'up',
-      link: `/countries/${countryCode}/services/placements`,
+      link: `/${countryCode}/services/placements`,
       category: "HR Placements",
     },
   ];

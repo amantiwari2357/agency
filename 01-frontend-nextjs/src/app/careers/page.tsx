@@ -1,7 +1,22 @@
 import React from "react";
 import Header from "@/components/layout/NavigationHeader";
 import AdvancedFooter from "@/components/footer/AdvancedFooter";
+import SuccessStoryBanner from "@/components/advertisements/SuccessStoryBanner";
 import { Briefcase, Users, MapPin, DollarSign, Clock, ArrowRight, CheckCircle } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Careers | AEX Agency",
+  description: "Join our team at AEX Agency. Explore career opportunities and build the future with us. We're looking for talented individuals passionate about creating exceptional digital experiences.",
+  alternates: {
+    canonical: "https://aexagency.com/careers",
+  },
+  openGraph: {
+    title: "Careers | AEX Agency",
+    description: "Join our team at AEX Agency. Explore career opportunities and build the future with us.",
+    url: "https://aexagency.com/careers",
+  },
+};
 
 export default function CareersPage() {
   const openPositions = [
@@ -65,6 +80,13 @@ export default function CareersPage() {
             Build the future with AEX Agency. We're looking for talented individuals who are passionate about creating exceptional digital experiences.
           </p>
         </div>
+
+        <SuccessStoryBanner
+          countryCode="us"
+          countryName="United States"
+          type="company"
+          serviceType="company"
+        />
 
         {/* Benefits Section */}
         <div className="mb-16">

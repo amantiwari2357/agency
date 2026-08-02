@@ -199,3 +199,188 @@ export const initializeCountries = async (req: Request, res: Response) => {
     });
   }
 };
+
+// Get country statistics
+export const getCountryStatistics = async (req: Request, res: Response) => {
+  try {
+    const totalCountries = await Country.countDocuments({ isActive: true });
+    const trendingCountries = await Country.countDocuments({ isActive: true, trending: true });
+    const regions = await Country.distinct('region');
+    const countriesByRegion: Record<string, number> = {};
+    
+    for (const region of regions) {
+      countriesByRegion[region] = await Country.countDocuments({ region, isActive: true });
+    }
+    
+    const currencyDistribution = await Country.aggregate([
+      { $match: { isActive: true } },
+      { $group: { _id: '$currency', count: { $sum: 1 } } },
+      { $sort: { count: -1 } }
+    ]);
+    
+    res.json({
+      success: true,
+      data: {
+        totalCountries,
+        trendingCountries,
+        totalRegions: regions.length,
+        regions,
+        countriesByRegion,
+        currencyDistribution,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: 'Failed to fetch country statistics',
+    });
+  }
+};
+
+// Bulk update countries
+export const bulkUpdateCountries = async (req: Request, res: Response) => {
+  try {
+    const { updates } = req.body; // Array of { code, updates }
+    
+    const results = [];
+    for (const { code, ...updateData } of updates) {
+      const country = await Country.findOneAndUpdate(
+        { code: code.toUpperCase() },
+        updateData,
+        { new: true, runValidators: true }
+      );
+      if (country) {
+        results.push(country);
+      }
+    }
+    
+    res.json({
+      success: true,
+      data: results,
+      count: results.length,
+      message: `${results.length} countries updated successfully`,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: 'Failed to bulk update countries',
+    });
+  }
+};
+
+// Bulk toggle trending
+export const bulkToggleTrending = async (req: Request, res: Response) => {
+  try {
+    const { codes, trending } = req.body;
+    
+    const result = await Country.updateMany(
+      { code: { $in: codes.map((c: string) => c.toUpperCase()) } },
+      { trending }
+    );
+    
+    res.json({
+      success: true,
+      message: `${result.modifiedCount} countries updated successfully`,
+      modifiedCount: result.modifiedCount,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: 'Failed to bulk toggle trending',
+    });
+  }
+};
+
+// Advanced search with filters
+export const advancedSearchCountries = async (req: Request, res: Response) => {
+  try {
+    const {
+      search,
+      region,
+      trending,
+      currency,
+      language,
+      isActive,
+      page = 1,
+      limit = 20,
+      sortBy = 'name',
+      sortOrder = 'asc'
+    } = req.query as any;
+    
+    const filter: any = {};
+    
+    if (search) {
+      filter.$or = [
+        { name: { $regex: search, $options: 'i' } },
+        { code: { $regex: search, $options: 'i' } }
+      ];
+    }
+    
+    if (region) filter.region = region;
+    if (trending !== undefined) filter.trending = trending === 'true';
+    if (currency) filter.currency = Array.isArray(currency) ? currency[0].toUpperCase() : currency.toUpperCase();
+    if (language) filter.language = language;
+    if (isActive !== undefined) filter.isActive = isActive === 'true';
+    
+    const skip = (Number(page) - 1) * Number(limit);
+    const sort: any = {};
+    sort[sortBy as string] = sortOrder === 'asc' ? 1 : -1;
+    
+    const [countries, total] = await Promise.all([
+      Country.find(filter)
+        .sort(sort)
+        .skip(skip)
+        .limit(Number(limit)),
+      Country.countDocuments(filter)
+    ]);
+    
+    res.json({
+      success: true,
+      data: countries,
+      pagination: {
+        page: Number(page),
+        limit: Number(limit),
+        total,
+        pages: Math.ceil(total / Number(limit)),
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: 'Failed to search countries',
+    });
+  }
+};
+
+// Update country settings
+export const updateCountrySettings = async (req: Request, res: Response) => {
+  try {
+    const { code } = req.params;
+    const { settings } = req.body;
+    const countryCode = Array.isArray(code) ? code[0] : code;
+    
+    const country = await Country.findOneAndUpdate(
+      { code: countryCode.toUpperCase() },
+      { settings },
+      { new: true, runValidators: true }
+    );
+    
+    if (!country) {
+      return res.status(404).json({
+        success: false,
+        error: 'Country not found',
+      });
+    }
+    
+    res.json({
+      success: true,
+      data: country,
+      message: 'Country settings updated successfully',
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: 'Failed to update country settings',
+    });
+  }
+};
