@@ -1,11 +1,12 @@
 import React from "react";
 import Header from "@/components/layout/NavigationHeader";
-import { CloudFooter } from "@/components/layout/ServiceSpecificFooters/CloudFooter";
+import AdvancedFooter from "@/components/footer/AdvancedFooter";
 import CloudServicesFeature from "@/features/cloud-services-feature";
 import LeadCaptureFeature from "@/features/lead-capture-feature";
 import SchemaMarkup from "@/features/seo-schema-feature";
 import ServiceBackLink from "@/components/page-sections/ServiceBackLink";
 import ServiceHeroSection from "@/components/page-sections/ServiceHeroSection";
+import InsightsToggle from "@/components/insights/InsightsToggle";
 
 interface PageProps {
   params: Promise<{ country: string }>;
@@ -14,6 +15,15 @@ interface PageProps {
 export default async function CloudServicePage({ params }: PageProps) {
   const { country } = await params;
   const countryCode = country || "us";
+  
+  const countryData: Record<string, { name: string; currency: string; currencySymbol: string }> = {
+    us: { name: "United States", currency: "USD", currencySymbol: "$" },
+    uk: { name: "United Kingdom", currency: "GBP", currencySymbol: "£" },
+    ae: { name: "United Arab Emirates", currency: "AED", currencySymbol: "د.إ" },
+    in: { name: "India", currency: "INR", currencySymbol: "₹" },
+  };
+  
+  const currentCountry = countryData[countryCode] || countryData.us;
 
   return (
     <>
@@ -34,7 +44,14 @@ export default async function CloudServicePage({ params }: PageProps) {
         <LeadCaptureFeature />
       </main>
 
-      <CloudFooter />
+      <AdvancedFooter 
+        countryCode={countryCode}
+        countryName={currentCountry.name}
+        currency={currentCountry.currency}
+        currencySymbol={currentCountry.currencySymbol}
+      />
+
+      <InsightsToggle />
     </>
   );
 }

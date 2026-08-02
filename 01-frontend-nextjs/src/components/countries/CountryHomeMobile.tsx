@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { ArrowRight, DollarSign, Building2, Zap, Users, TrendingUp } from 'lucide-react';
 import Link from "next/link";
 import AdvertisementSection from "@/components/advertisements/AdvertisementSection";
-import InsightsSection from "@/components/insights/InsightsSection";
 
 interface CountryHomeMobileProps {
   countryCode: string;
@@ -185,9 +184,6 @@ export default function CountryHomeMobile({ countryCode, countryName, currency, 
 
       {/* Advertisement Section */}
       <AdvertisementSection />
-
-      {/* Insights Section */}
-      <InsightsSection countryCode={countryCode} />
     </div>
   );
 }

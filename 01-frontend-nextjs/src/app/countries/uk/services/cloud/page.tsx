@@ -6,6 +6,13 @@ import LeadCaptureFeature from "@/features/lead-capture-feature";
 import SchemaMarkup from "@/features/seo-schema-feature";
 import ServiceBackLink from "@/components/page-sections/ServiceBackLink";
 import ServiceHeroSection from "@/components/page-sections/ServiceHeroSection";
+import CloudFeaturesSection from "@/components/page-sections/CloudFeaturesSection";
+import CloudHowItWorksSection from "@/components/page-sections/CloudHowItWorksSection";
+import CloudCaseStudiesSection from "@/components/page-sections/CloudCaseStudiesSection";
+import CloudTestimonialsSection from "@/components/page-sections/CloudTestimonialsSection";
+import CloudFAQSection from "@/components/page-sections/CloudFAQSection";
+import ServiceCTASection from "@/components/page-sections/ServiceCTASection";
+import InsightsToggle from "@/components/insights/InsightsToggle";
 
 export default function UKCloudServicePage() {
   const countryCode = "uk";
@@ -29,6 +36,12 @@ export default function UKCloudServicePage() {
         />
 
         <CloudServicesFeature />
+        <CloudFeaturesSection />
+        <CloudHowItWorksSection />
+        <CloudCaseStudiesSection />
+        <CloudTestimonialsSection />
+        <CloudFAQSection />
+        <ServiceCTASection countryCode={countryCode} />
         <LeadCaptureFeature />
       </main>
 
@@ -38,6 +51,8 @@ export default function UKCloudServicePage() {
         currency={currency}
         currencySymbol={currencySymbol}
       />
+
+      <InsightsToggle />
     </>
   );
 }

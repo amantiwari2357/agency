@@ -1,9 +1,10 @@
 import React from "react";
 import Header from "@/components/layout/NavigationHeader";
-import Footer from "@/components/layout/SiteFooter";
+import AdvancedFooter from "@/components/footer/AdvancedFooter";
 import { getCountryByCode } from "../../../config/countries";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import InsightsToggle from "@/components/insights/InsightsToggle";
 
 interface PageProps {
   params: Promise<{ countryCode: string }>;
@@ -12,6 +13,15 @@ interface PageProps {
 export default async function CountryDetailPage({ params }: PageProps) {
   const { countryCode } = await params;
   const country = getCountryByCode(countryCode);
+  
+  const countryData: Record<string, { name: string; currency: string; currencySymbol: string }> = {
+    us: { name: "United States", currency: "USD", currencySymbol: "$" },
+    uk: { name: "United Kingdom", currency: "GBP", currencySymbol: "£" },
+    ae: { name: "United Arab Emirates", currency: "AED", currencySymbol: "د.إ" },
+    in: { name: "India", currency: "INR", currencySymbol: "₹" },
+  };
+  
+  const currentCountry = countryData[countryCode] || countryData.us;
 
   if (!country) {
     notFound();
@@ -116,7 +126,14 @@ export default async function CountryDetailPage({ params }: PageProps) {
         </section>
       </main>
 
-      <Footer />
+      <AdvancedFooter 
+        countryCode={countryCode}
+        countryName={currentCountry.name}
+        currency={currentCountry.currency}
+        currencySymbol={currentCountry.currencySymbol}
+      />
+
+      <InsightsToggle />
     </div>
   );
 }

@@ -223,22 +223,7 @@ export default function InsightsSection({ countryCode }: { countryCode: string }
           ))}
         </div>
 
-        {/* CTA Section */}
-        <motion.div
-          className="mt-12 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.7, duration: 0.6 }}
-        >
-          <Link href="/admin/insights">
-            <button className="px-8 py-4 bg-gradient-to-r from-[#4d7cf5] to-[#3660e0] hover:from-[#3660e0] hover:to-[#4d7cf5] text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2 mx-auto">
-              <BarChart3 className="w-5 h-5" />
-              Manage Insights
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </Link>
-        </motion.div>
+
       </div>
     </section>
   );

@@ -6,6 +6,13 @@ import LeadCaptureFeature from "@/features/lead-capture-feature";
 import SchemaMarkup from "@/features/seo-schema-feature";
 import ServiceBackLink from "@/components/page-sections/ServiceBackLink";
 import ServiceHeroSection from "@/components/page-sections/ServiceHeroSection";
+import MarketingFeaturesSection from "@/components/page-sections/MarketingFeaturesSection";
+import MarketingHowItWorksSection from "@/components/page-sections/MarketingHowItWorksSection";
+import MarketingCaseStudiesSection from "@/components/page-sections/MarketingCaseStudiesSection";
+import MarketingTestimonialsSection from "@/components/page-sections/MarketingTestimonialsSection";
+import MarketingFAQSection from "@/components/page-sections/MarketingFAQSection";
+import ServiceCTASection from "@/components/page-sections/ServiceCTASection";
+import InsightsToggle from "@/components/insights/InsightsToggle";
 
 export default function UKMarketingServicePage() {
   const countryCode = "uk";
@@ -29,6 +36,12 @@ export default function UKMarketingServicePage() {
         />
 
         <MarketingAutomationFeature />
+        <MarketingFeaturesSection />
+        <MarketingHowItWorksSection />
+        <MarketingCaseStudiesSection />
+        <MarketingTestimonialsSection />
+        <MarketingFAQSection />
+        <ServiceCTASection countryCode={countryCode} />
         <LeadCaptureFeature />
       </main>
 
@@ -38,6 +51,8 @@ export default function UKMarketingServicePage() {
         currency={currency}
         currencySymbol={currencySymbol}
       />
+
+      <InsightsToggle />
     </>
   );
 }

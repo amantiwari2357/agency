@@ -36,15 +36,15 @@ export default function SolutionsDesktop() {
   const activeSolution = solutions.find((s) => s.id === activeTab) || solutions[0];
 
   return (
-    <section className="py-12 my-6 glass-panel rounded-3xl p-8 border border-slate-800">
+    <section className="py-12 my-6 bg-white rounded-3xl border border-[#4d7cf5]/30 p-8 shadow-xl shadow-[#4d7cf5]/10">
       <div className="text-center max-w-2xl mx-auto mb-10">
-        <span className="text-xs font-semibold uppercase tracking-widest text-purple-400 bg-purple-950/60 px-3 py-1 rounded-full border border-purple-800/50">
+        <span className="text-xs font-semibold uppercase tracking-wider bg-[#4d7cf5]/10 text-[#4d7cf5] px-3 py-1 rounded-full border border-[#4d7cf5]/30">
           Desktop Tabbed Interactive Feature
         </span>
-        <h2 className="text-3xl font-extrabold text-white mt-3">
+        <h2 className="text-3xl font-extrabold text-[#1c1f26] mt-3">
           Specialized Business Solutions
         </h2>
-        <p className="text-slate-400 text-sm mt-2">
+        <p className="text-[#4a5060] text-sm mt-2">
           Tailored tech architectures built for specific business verticals.
         </p>
       </div>
@@ -58,17 +58,17 @@ export default function SolutionsDesktop() {
               onClick={() => setActiveTab(item.id)}
               className={`w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between ${
                 activeTab === item.id
-                  ? "bg-slate-800 border-purple-500/80 shadow-lg shadow-purple-500/10 text-white"
-                  : "bg-slate-900/50 border-slate-800 text-slate-400 hover:bg-slate-800/50 hover:text-white"
+                  ? "bg-[#4d7cf5]/10 border-[#4d7cf5] shadow-lg shadow-[#4d7cf5]/10 text-[#1c1f26]"
+                  : "bg-[#eef0f4] border-[#4d7cf5]/20 text-[#4a5060] hover:bg-[#4d7cf5]/5 hover:text-[#1c1f26]"
               }`}
             >
               <div className="flex items-center space-x-3">
-                <div className={`p-2.5 rounded-lg ${activeTab === item.id ? "bg-purple-600 text-white" : "bg-slate-800 text-slate-400"}`}>
+                <div className={`p-2.5 rounded-lg ${activeTab === item.id ? "bg-[#4d7cf5] text-white" : "bg-white border border-[#4d7cf5]/20 text-[#4a5060]"}`}>
                   {item.icon}
                 </div>
                 <div>
-                  <h4 className="font-bold text-sm">{item.title}</h4>
-                  <span className="text-[11px] text-slate-400 block">{item.badge}</span>
+                  <h4 className="font-bold text-sm text-[#1c1f26]">{item.title}</h4>
+                  <span className="text-[11px] text-[#4a5060] block">{item.badge}</span>
                 </div>
               </div>
             </button>
@@ -76,26 +76,26 @@ export default function SolutionsDesktop() {
         </div>
 
         {/* Display Content Box */}
-        <div className="lg:col-span-8 glass-card rounded-2xl p-8 border border-purple-900/30">
+        <div className="lg:col-span-8 bg-[#eef0f4] rounded-2xl p-8 border border-[#4d7cf5]/20">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-xs font-bold text-purple-400 bg-purple-950/80 px-3 py-1 rounded-md border border-purple-800">
+            <span className="text-xs font-bold text-[#4d7cf5] bg-[#4d7cf5]/10 px-3 py-1 rounded-md border border-[#4d7cf5]/30">
               {activeSolution.badge}
             </span>
-            <div className="flex items-center text-emerald-400 text-xs font-medium">
+            <div className="flex items-center text-[#4d7cf5] text-xs font-medium">
               <Zap className="w-4 h-4 mr-1" /> Production Ready
             </div>
           </div>
 
-          <h3 className="text-2xl font-bold text-white mb-3">{activeSolution.title}</h3>
-          <p className="text-slate-300 text-sm leading-relaxed mb-6">
+          <h3 className="text-2xl font-bold text-[#1c1f26] mb-3">{activeSolution.title}</h3>
+          <p className="text-[#4a5060] text-sm leading-relaxed mb-6">
             {activeSolution.description}
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-slate-800">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-[#4d7cf5]/20">
             {activeSolution.features.map((feat, idx) => (
-              <div key={idx} className="bg-slate-950/80 p-4 rounded-xl border border-slate-800">
-                <ShieldCheck className="w-5 h-5 text-purple-400 mb-2" />
-                <p className="text-xs font-medium text-slate-200">{feat}</p>
+              <div key={idx} className="bg-white p-4 rounded-xl border border-[#4d7cf5]/20">
+                <ShieldCheck className="w-5 h-5 text-[#4d7cf5] mb-2" />
+                <p className="text-xs font-medium text-[#1c1f26]">{feat}</p>
               </div>
             ))}
           </div>

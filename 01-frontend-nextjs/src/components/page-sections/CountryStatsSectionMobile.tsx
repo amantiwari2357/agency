@@ -26,11 +26,11 @@ const stats = [
 
 export default function CountryStatsSectionMobile() {
   return (
-    <section className="py-8 px-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-2xl border border-blue-500/30 relative overflow-hidden">
+    <section className="py-12 px-6 bg-gradient-to-r from-[#4d7cf5] via-[#4366d8] to-[#3660e0] rounded-2xl border border-[#4d7cf5]/30 relative overflow-hidden shadow-xl shadow-[#4d7cf5]/20">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-20 -right-20 w-60 h-60 bg-white/10 rounded-full blur-2xl" />
-        <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-white/10 rounded-full blur-2xl" />
+        <div className="absolute -top-32 -right-32 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
+        <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
       </div>
 
       <div className="relative">
@@ -43,13 +43,13 @@ export default function CountryStatsSectionMobile() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * index, duration: 0.6 }}
             >
-              <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-3">
+              <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-4">
                 <stat.icon className={`w-6 h-6 text-white`} />
               </div>
-              <span className="text-4xl md:text-5xl font-black text-white block">
+              <span className="text-4xl md:text-5xl font-black text-white block mb-1">
                 {stat.value}
               </span>
-              <span className="text-xs font-bold text-blue-100 uppercase tracking-wider block mt-2">
+              <span className="text-sm font-bold text-white/90 uppercase tracking-wider block mt-2">
                 {stat.label}
               </span>
             </motion.div>

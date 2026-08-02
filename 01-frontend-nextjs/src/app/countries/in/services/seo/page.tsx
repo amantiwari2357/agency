@@ -6,6 +6,7 @@ import LeadCaptureFeature from "@/features/lead-capture-feature";
 import SchemaMarkup from "@/features/seo-schema-feature";
 import ServiceBackLink from "@/components/page-sections/ServiceBackLink";
 import ServiceHeroSection from "@/components/page-sections/ServiceHeroSection";
+import InsightsToggle from "@/components/insights/InsightsToggle";
 
 export default function INSeoServicePage() {
   const countryCode = "in";
@@ -38,6 +39,8 @@ export default function INSeoServicePage() {
         currency={currency}
         currencySymbol={currencySymbol}
       />
+
+      <InsightsToggle />
     </>
   );
 }

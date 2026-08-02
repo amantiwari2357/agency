@@ -14,26 +14,26 @@ export default function PricingDesktop({ countryCode }: PricingDesktopProps) {
     usePricingCalculator(countryCode);
 
   return (
-    <section className="py-12">
+    <section className="py-12 bg-white rounded-3xl border border-[#4d7cf5]/30 p-8 shadow-xl shadow-[#4d7cf5]/10">
       <div className="text-center max-w-3xl mx-auto mb-10">
-        <span className="text-xs font-semibold uppercase tracking-widest text-cyan-400 bg-cyan-950/60 px-3 py-1 rounded-full border border-cyan-800/50">
+        <span className="text-xs font-semibold uppercase tracking-wider bg-[#4d7cf5]/10 text-[#4d7cf5] px-3 py-1 rounded-full border border-[#4d7cf5]/30">
           Desktop Region-Aware Matrix ({currencyCode})
         </span>
-        <h2 className="text-3xl font-extrabold text-white mt-3">
+        <h2 className="text-3xl font-extrabold text-[#1c1f26] mt-3">
           Transparent Regional Pricing
         </h2>
-        <p className="text-slate-400 text-sm mt-2">
+        <p className="text-[#4a5060] text-sm mt-2">
           Automatic currency localized rates for US, UK, and UAE markets.
         </p>
 
         {/* Billing Switcher */}
-        <div className="mt-6 inline-flex items-center p-1 bg-slate-900 border border-slate-800 rounded-2xl">
+        <div className="mt-6 inline-flex items-center p-1 bg-[#eef0f4] border border-[#4d7cf5]/20 rounded-2xl">
           <button
             onClick={() => setBillingCycle("monthly")}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
               billingCycle === "monthly"
-                ? "bg-blue-600 text-white shadow-md"
-                : "text-slate-400 hover:text-white"
+                ? "bg-[#4d7cf5] text-white shadow-md"
+                : "text-[#4a5060] hover:text-[#1c1f26]"
             }`}
           >
             Monthly Billing
@@ -42,12 +42,12 @@ export default function PricingDesktop({ countryCode }: PricingDesktopProps) {
             onClick={() => setBillingCycle("annual")}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center ${
               billingCycle === "annual"
-                ? "bg-blue-600 text-white shadow-md"
-                : "text-slate-400 hover:text-white"
+                ? "bg-[#4d7cf5] text-white shadow-md"
+                : "text-[#4a5060] hover:text-[#1c1f26]"
             }`}
           >
             Annual Billing
-            <span className="ml-1.5 bg-emerald-500 text-slate-950 px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase">
+            <span className="ml-1.5 bg-[#4d7cf5] text-white px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase">
               Save 20%
             </span>
           </button>
@@ -60,31 +60,31 @@ export default function PricingDesktop({ countryCode }: PricingDesktopProps) {
           return (
             <div
               key={plan.id}
-              className={`relative glass-card rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 ${
+              className={`relative bg-[#eef0f4] rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 ${
                 plan.popular
-                  ? "border-2 border-blue-500/80 shadow-2xl shadow-blue-500/20 scale-105 z-10"
-                  : "border border-slate-800"
+                  ? "border-2 border-[#4d7cf5] shadow-2xl shadow-[#4d7cf5]/20 scale-105 z-10"
+                  : "border border-[#4d7cf5]/20"
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[11px] font-extrabold uppercase tracking-wider px-4 py-1 rounded-full shadow-lg flex items-center">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#4d7cf5] to-[#3660e0] text-white text-[11px] font-extrabold uppercase tracking-wider px-4 py-1 rounded-full shadow-lg flex items-center">
                   <Sparkles className="w-3.5 h-3.5 mr-1" /> Most Popular
                 </div>
               )}
 
               <div>
-                <h3 className="text-xl font-bold text-white">{plan.name}</h3>
+                <h3 className="text-xl font-bold text-[#1c1f26]">{plan.name}</h3>
                 <div className="mt-4 flex items-baseline">
-                  <span className="text-4xl font-extrabold text-white tracking-tight">
+                  <span className="text-4xl font-extrabold text-[#4d7cf5] tracking-tight">
                     {symbol}{finalPrice.toLocaleString()}
                   </span>
-                  <span className="text-slate-400 text-xs ml-2">/ month</span>
+                  <span className="text-[#4a5060] text-xs ml-2">/ month</span>
                 </div>
 
-                <div className="mt-6 space-y-3 pt-6 border-t border-slate-800">
+                <div className="mt-6 space-y-3 pt-6 border-t border-[#4d7cf5]/20">
                   {plan.features.map((feat, idx) => (
-                    <div key={idx} className="flex items-start text-xs text-slate-300">
-                      <Check className="w-4 h-4 text-cyan-400 mr-2.5 flex-shrink-0 mt-0.5" />
+                    <div key={idx} className="flex items-start text-xs text-[#4a5060]">
+                      <Check className="w-4 h-4 text-[#4d7cf5] mr-2.5 flex-shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </div>
                   ))}

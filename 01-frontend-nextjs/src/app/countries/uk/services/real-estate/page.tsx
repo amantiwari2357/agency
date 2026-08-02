@@ -6,6 +6,13 @@ import LeadCaptureFeature from "@/features/lead-capture-feature";
 import SchemaMarkup from "@/features/seo-schema-feature";
 import ServiceBackLink from "@/components/page-sections/ServiceBackLink";
 import ServiceHeroSection from "@/components/page-sections/ServiceHeroSection";
+import RealEstateFeaturesSection from "@/components/page-sections/RealEstateFeaturesSection";
+import HowItWorksSection from "@/components/page-sections/HowItWorksSection";
+import CaseStudiesSection from "@/components/page-sections/CaseStudiesSection";
+import TestimonialsSection from "@/components/page-sections/TestimonialsSection";
+import FAQSection from "@/components/page-sections/FAQSection";
+import ServiceCTASection from "@/components/page-sections/ServiceCTASection";
+import InsightsToggle from "@/components/insights/InsightsToggle";
 
 export default function UKRealEstateServicePage() {
   const countryCode = "uk";
@@ -29,6 +36,12 @@ export default function UKRealEstateServicePage() {
         />
 
         <RealEstateFeature />
+        <RealEstateFeaturesSection />
+        <HowItWorksSection />
+        <CaseStudiesSection />
+        <TestimonialsSection />
+        <FAQSection />
+        <ServiceCTASection countryCode={countryCode} />
         <LeadCaptureFeature />
       </main>
 
@@ -38,6 +51,8 @@ export default function UKRealEstateServicePage() {
         currency={currency}
         currencySymbol={currencySymbol}
       />
+
+      <InsightsToggle />
     </>
   );
 }

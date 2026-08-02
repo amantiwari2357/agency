@@ -6,6 +6,13 @@ import LeadCaptureFeature from "@/features/lead-capture-feature";
 import SchemaMarkup from "@/features/seo-schema-feature";
 import ServiceBackLink from "@/components/page-sections/ServiceBackLink";
 import ServiceHeroSection from "@/components/page-sections/ServiceHeroSection";
+import EcommerceFeaturesSection from "@/components/page-sections/EcommerceFeaturesSection";
+import EcommerceHowItWorksSection from "@/components/page-sections/EcommerceHowItWorksSection";
+import EcommerceCaseStudiesSection from "@/components/page-sections/EcommerceCaseStudiesSection";
+import EcommerceTestimonialsSection from "@/components/page-sections/EcommerceTestimonialsSection";
+import EcommerceFAQSection from "@/components/page-sections/EcommerceFAQSection";
+import ServiceCTASection from "@/components/page-sections/ServiceCTASection";
+import InsightsToggle from "@/components/insights/InsightsToggle";
 
 export default function UKEcommerceServicePage() {
   const countryCode = "uk";
@@ -29,6 +36,12 @@ export default function UKEcommerceServicePage() {
         />
 
         <EcommerceApparelFeature />
+        <EcommerceFeaturesSection />
+        <EcommerceHowItWorksSection />
+        <EcommerceCaseStudiesSection />
+        <EcommerceTestimonialsSection />
+        <EcommerceFAQSection />
+        <ServiceCTASection countryCode={countryCode} />
         <LeadCaptureFeature />
       </main>
 
@@ -38,6 +51,8 @@ export default function UKEcommerceServicePage() {
         currency={currency}
         currencySymbol={currencySymbol}
       />
+
+      <InsightsToggle />
     </>
   );
 }

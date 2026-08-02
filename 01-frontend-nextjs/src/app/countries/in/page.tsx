@@ -4,6 +4,7 @@ import Header from "@/components/layout/NavigationHeader";
 import AdvancedFooter from "@/components/footer/AdvancedFooter";
 import CountryHomeDesktop from "@/components/countries/CountryHomeDesktop";
 import CountryHomeMobile from "@/components/countries/CountryHomeMobile";
+import InsightsToggle from "@/components/insights/InsightsToggle";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 export default function INLandingPage() {
@@ -41,6 +42,8 @@ export default function INLandingPage() {
         currency={currency}
         currencySymbol={currencySymbol}
       />
+
+      <InsightsToggle />
     </>
   );
 }
